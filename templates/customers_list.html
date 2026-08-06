@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Customer Registry</h2>
+<p>Staff members can review customer information and check past drug transactions.</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cust in customers %}
+        <tr>
+            <td>{{ cust.customer_id }}</td>
+            <td><strong>{{ cust.name }}</strong></td>
+            <td>{{ cust.phone }}</td>
+            <td>{{ cust.email }}</td>
+            <td>
+                <a href="/admin/customers/{{ cust.customer_id }}/history" class="btn btn-primary" style="padding: 4px 10px; font-size: 12px;">View Order History</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
